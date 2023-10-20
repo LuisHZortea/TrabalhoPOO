@@ -15,8 +15,6 @@ model Grupo {
   dataHora DateTime
   alunos Aluno[]
   lider String @unique
-
-  //ISSO TA DANDO PROBLEMA EU N SEI O PQ
   estande Estande @relation(fields: [numeroEstande], references: [numeroEstande])
 }
 
@@ -41,4 +39,5 @@ model Avaliacao {
 
 model Estande {
   numeroEstande Int @id
+  grupos Grupo[] 
 }
