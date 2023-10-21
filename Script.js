@@ -1,3 +1,15 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
 model Aluno {
   id Int @id @default(autoincrement())
   email String
@@ -46,6 +58,5 @@ model Estande {
   grupos Grupo[] 
  
 }
-
 
 
