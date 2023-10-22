@@ -1,0 +1,31 @@
+import { PrismaClient } from "@prisma/client";
+import Professor from "../classes/Professor";
+
+const prisma = new PrismaClient();
+
+export async function createProfessor(professor: Professor) {
+
+    const professorData = await prisma.professor.create({
+        data : {
+            email: professor.getEmail(),
+            nome: professor.getNome(),
+            matricula: professor.getMatricula()
+        }
+    })
+}
+
+export async function readProfessor(professor: Professor) {
+    const professorData = await prisma.professor.findUnique({
+        where : {
+            matricula : professor.getMatricula()
+        }
+    })
+}
+
+export async function deleteProfessor(professor: Professor) {
+    const professorData = await prisma.professor.delete({
+        where: {
+            matricula: professor.getMatricula()
+        }
+    })
+}
